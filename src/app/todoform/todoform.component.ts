@@ -8,9 +8,8 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./todoform.component.css']
 })
 export class TodoformComponent implements OnInit {
-
+  headers: Headers;
   public submitted = false;
-
   public deadlines: string[] = ['指定なし', '12月1日', '12月2日', '12月3日', '12月4日', '12月5日', '12月6日', '12月7日'];
   public selectedDeadline = '指定なし';
   public currentText = '';
@@ -35,5 +34,9 @@ export class TodoformComponent implements OnInit {
       this.selectedDeadline = '指定なし';
       this.tasks.push(task);
     });
+  }
+
+  deleteTask(index: number) {
+    this.tasks.splice(index, 1);
   }
 }

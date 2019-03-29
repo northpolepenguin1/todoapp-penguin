@@ -5,7 +5,7 @@
       <label for="deadline">
         期限:
       </label>
-      <select class="form-control" [(ngModel)]="selectedDeadline" name="selectedDeadline">
+      <select class="form-control" [(ngModel)]="selectedDeadline" name="selectedDeadline" required>
         <option *ngFor="let deadline of deadlines" [value]="deadline">{{ deadline }}</option>
       </select>
     </div>
@@ -14,7 +14,7 @@
       <label for="task">
         タスク:
       </label>
-      <textarea cols="40" rows="4" class="form-control" placeholder="タスクをご記入ください" [(ngModel)]="currentText" name="currentText"></textarea>
+      <textarea cols="40" rows="4" class="form-control" placeholder="タスクをご記入ください" [(ngModel)]="currentText" name="currentText" required></textarea>
     </div>
 
     <button type="submit" class="btn btn-success btn-block" (click)="createTask()">登録</button>
@@ -25,8 +25,8 @@
   <div class="registeredTasks">
     <h1>タスク一覧</h1>
     <ul class="list-group">
-        <a href="#"><li *ngFor="let task of tasks" [value]="task" class="list-group-item task-item">{{ task }}</li></a>
+        <li *ngFor="let task of tasks; index as i" [value]="task" class="list-group-item task-item"><a href="#">{{ task }}</a><button type="button" class="btn btn-danger" (click)="deleteTask(i)">×</button>
+        </li>
     </ul>
   </div>
-
 </div>
